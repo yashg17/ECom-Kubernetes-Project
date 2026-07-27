@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MegaStore - Online Shopping Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f1f3f6;
+        }
+        header {
+            background-color: #2874f0;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .search-bar input {
+            width: 400px;
+            padding: 10px;
+            border: none;
+            border-radius: 2px;
+            outline: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .banner {
+            background: linear-gradient(135deg, #ff9f00, #ff5722);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .banner h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .product-img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        .product-title {
+            font-size: 16px;
+            color: #212121;
+            margin-bottom: 8px;
+        }
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #388e3c;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            background-color: #ff9f00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .buy-btn:hover {
+            background-color: #fb641b;
+        }
+        footer {
+            background-color: #172337;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MegaStore</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products, brands and more">
+        </div>
+        <div class="nav-links">
+            <span>Account</span>
+            <span>Cart</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="banner">
+            <h1>Big Billion Days Sale is Live!</h1>
+            <p>Up to 80% off on electronics, fashion, and more. Deployed via Kubernetes Production Cluster.</p>
+        </div>
+
+        <h2 style="margin-bottom: 15px; color: #212121;">Featured Products</h2>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img class="product-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 24 24' fill='none' stroke='%232874f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2' ry='2'></rect><line x1='12' y1='18' x2='12.01' y2='18'></line></svg>" alt="Smartphone">
+                <div class="product-title">Pro Smartphone 5G</div>
+                <div class="product-price">$499.00</div>
+                <button class="buy-btn" onclick="alert('Item added to cart!')">Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img class="product-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 24 24' fill='none' stroke='%23ff5722' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z'></path><line x1='4' y1='22' x2='4' y2='15'></line></svg>" alt="Headphones">
+                <div class="product-title">Wireless Headphones</div>
+                <div class="product-price">$99.00</div>
+                <button class="buy-btn" onclick="alert('Item added to cart!')">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img class="product-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 24 24' fill='none' stroke='%23388e3c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'></path><line x1='3' y1='6' x2='21' y2='6'></line><path d='M16 10a4 4 0 0 1-8 0'></path></svg>" alt="Running Shoes">
+                <div class="product-title">Sports Running Shoes</div>
+                <div class="product-price">$59.00</div>
+                <button class="buy-btn" onclick="alert('Item added to cart!')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MegaStore Inc. Powered by Kubernetes Local Production Cluster.</p>
+    </footer>
+
+</body>
+</html>
