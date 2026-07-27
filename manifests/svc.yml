@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ecom-deployment
+  name: ecom-service
+  namespace: ecommerce-prod
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30080
+  selector:
+    app: ecom-deployment
+  type: NodePort
+

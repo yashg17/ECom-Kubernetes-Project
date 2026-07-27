@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ecom-deployment
+  name: ecom-deployment
+  namespace: ecommerce-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecom-deployment
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecom-deployment
+    spec:
+      serviceAccountName: ecom-sa
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: ecom-web-container
+        image: ecom-web:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: ecom-configmap
+        - secretRef:
+            name: ecom-secret
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "250m"
+            memory: "128Mi"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        volumeMounts:
+        - name: ecom-storage
+          mountPath: /usr/share/nginx/html/uploads
+      volumes:
+      - name: ecom-storage
+        persistentVolumeClaim:
+          claimName: ecom-pvc
+

@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  APP_TITLE: MegaStore
+  DB_USERNAME: admin
+  ENVIRONMENT: Production
+kind: ConfigMap
+metadata:
+  name: ecom-configmap
+  namespace: ecommerce-prod

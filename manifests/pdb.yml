@@ -1,0 +1,15 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: ecom-pdb
+  namespace: ecommerce-prod
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: ecom-deployment
+status:
+  currentHealthy: 0
+  desiredHealthy: 0
+  disruptionsAllowed: 0
+  expectedPods: 0
